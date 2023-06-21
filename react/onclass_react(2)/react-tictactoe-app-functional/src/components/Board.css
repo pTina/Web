@@ -1,0 +1,13 @@
+.status{
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.board-row{
+    clear: both;
+}
+
+.game-board{
+    border-radius: 10px;
+    overflow: hidden;
+}

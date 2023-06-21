@@ -1,0 +1,37 @@
+input[type="text"]{
+    border-bottom: 1px solid #fff;
+}
+
+.Item{
+    display: flex;
+}
+
+.item-wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 1.5em 0;
+}
+
+.btn-delete{
+    color: #fff;
+}
+
+.ip-box{
+    margin: 0 1.5em;
+}
+
+input[type="checkbox"]:checked + svg path{
+    color: #F2620F;
+}
+
+.btn-delete,
+.chk-box{
+    padding-top: 1em;
+}   
+
+.userMemo{
+    width: 79%;
+    margin-top: 1em;
+}

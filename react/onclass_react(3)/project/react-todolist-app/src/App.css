@@ -1,0 +1,70 @@
+html{
+    background: #0D0D0D;
+}
+
+*{
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+input{
+    appearance: none;
+    background: none;
+    border: none;
+}
+
+textarea{
+    background: none;
+    border: none;
+    appearance: none;
+    resize: none;
+}
+
+textarea::-webkit-scrollbar {
+    display: none;
+}
+
+textarea:focus,
+input:focus{
+    outline: none;
+}
+
+.App {
+  text-align: center;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+header{
+    font-family: 'yg-jalnan';
+    color: #F2620F;
+}
+
+.btn-add path,
+.btn-add{
+    color: #F2620F;
+}
+
+button{
+    background: none;
+    border: none;
+}
+
+.btn-add svg{
+    margin-right: 7px;
+}
+
+.btn-add[disabled] path{
+    color: #ebebeb;
+    pointer-events: none;
+}
