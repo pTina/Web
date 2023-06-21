@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    /*    background: rgba(0,0,0,0.5);*/
+}
+
+li { list-style: none; }
+
+a { text-decoration: none; }
+
+img { 
+    border: 0; 
+    display: block; 
+}
+
+div{
+    position: absolute;
+/*    background: rgba(0,0,0,0.5);*/
+}
+
+body{
+    overflow-x: hidden;
+}
+
+#wrap{
+    width: 1920px;
+    height: 1080px;
+    top: 0px;
+    left: 0px;
+}

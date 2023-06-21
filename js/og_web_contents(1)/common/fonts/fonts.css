@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+/* font */
+@font-face {font-family:'minionPro'; font-style:normal; font-weight:400; src:url('MinionPro-Regular.otf') format('woff'); }
+@font-face {font-family:'minionPro'; font-style:normal; font-weight:600; src:url('MinionPro-Bold.otf') format('woff'); }
+
+@font-face {font-family:'times'; font-style:normal; font-weight:400; src:url('times.ttf') format('woff'); }
+
+@font-face {font-family:'appleSDG'; font-style:normal; font-weight:400; src:url('AppleSDGothicNeo.ttc') format('woff'); }
+
+@font-face {font-family:'visangTM'; font-style:normal; font-weight:400; src:url('VisangTM.ttf') format('woff'); }
+
+@font-face {font-family:'appleMyungjo'; font-style:normal; font-weight:400; src:url('AppleMyungjo.ttf') format(‘woff’); }
+
+
+/* ------------------------------------------------------------------------------------------------------------- */

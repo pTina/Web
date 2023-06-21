@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../../js/jquery-3.5.1.min.js"></script>
+    <style> 
+        p{position: absolute; left: 0; top: 0; opacity: 0;}
+        
+        .kf{
+            animation-name: ani;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes ani{
+            from{left: 0; opacity: 0;}
+            to{left: 100px ; opacity: 1;}            
+        }
+    </style>
+    <script>
+        $(function(){
+            $('p').addClass('kf');
+        })
+        
+        
+    </script>
+</head>
+
+<body>
+    <p>DAILY QUIZ</p>
+</body>
+</html>

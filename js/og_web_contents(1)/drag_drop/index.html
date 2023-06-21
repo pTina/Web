@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DragDrop</title>
+    <link rel="stylesheet" type="text/css" href="inc/css/index.css" />
+</head>
+
+<body>
+    <p>Drag &amp; Drop</p>
+    <p>1. 같은 위치에 있는 요소만 드래그 드랍 가능</p>
+    <div class="wrap">
+        <div class="dragArea">
+            <div class="dragItem">1</div>
+            <div class="dragItem">2</div>
+            <div class="dragItem">3</div>
+        </div>
+
+        <div class="dropArea">
+            <div class="dropItem"></div>
+            <div class="dropItem"></div>
+            <div class="dropItem"></div>
+        </div>
+        <div class="rebtn">다시하기</div>
+    </div>
+
+    <p>2. 드래그 아이템 규칙적으로 쌓이기<br>(1번구역은 html로 구조 미리 생성, 2번구역은 드롭 되면 생성되도록 구현, 3번구역 드롭된 개체 드래그가능</p>
+    <div class="wrap">
+        <div class="dragArea">
+            <div class="dragItem">1</div>
+            <div class="dragItem">2</div>
+            <div class="dragItem">3</div>
+        </div>
+
+        <div class="dropArea">
+            <div class="dropItem">
+                <div class="dropObj obj1"></div>
+                <div class="dropObj obj2"></div>
+                <div class="dropObj obj3"></div>
+                <div class="dropObj obj4"></div>
+            </div>
+            <div class="dropItem"></div>
+            <div class="dropItem"></div>
+        </div>
+        <div class="rebtn">다시하기</div>
+    </div>
+    <script src="../common/js/jquery-3.5.1.min.js"></script>
+    <script src="../common/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="inc/js/index.js"></script>
+</body>
+
+
+</html>

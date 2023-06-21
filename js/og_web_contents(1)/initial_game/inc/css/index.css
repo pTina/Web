@@ -1,0 +1,279 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.contents{
+    width: 700px;
+    height: 400px;
+    background-color: #bfe5e3;
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    
+}
+
+.objWrap{
+    position: relative;
+    top: 20%;
+    margin: 0px auto;
+}
+
+.obj{
+    position: absolute;
+    top: 0px;
+    width: 124px;
+    height: 124px;
+    background-color: rgba(0,172,217,0.5);
+}
+
+/* 마스크 */
+.mask{
+    width: 900px;
+    height: 523px;
+    position: absolute;
+    top: -18px;
+    left: -76px;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+/* 정답 */
+.obj.onCorrect{
+    background-color: #73cd49;
+    font-size: 83px;
+    line-height: 116px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* 오답 */
+.obj.onWrong{
+    background-color: rgba(219,0,0);
+    font-size: 83px;
+    line-height: 116px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.textarea{
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    
+    font-size: 83px;
+    line-height: 116px;
+    text-align: center;
+    font-weight: bold;
+    
+}
+
+.textarea:disabled{
+    color: #000000;
+}
+
+.textarea:focus{
+    outline: none;
+}
+
+.btn{
+    width: 134px;
+    height: 36px;
+    position: absolute;
+    cursor: pointer;
+    border-radius: 50px;
+    top: 308px;
+    
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    line-height: 36px;
+    
+    background-color: #99c352;
+    
+}
+
+.btn.on{
+    background: #cccccc;
+    color: #000000;
+    pointer-events: none;
+}
+
+.btnCheck{
+    left: 392px;
+}
+
+.btnResult{
+    left: 541px;
+    top: 353px;
+    display: none;
+}
+
+.btnNext{
+    left: 541px;
+}
+
+.btnReplay{
+    top: 353px;
+    left: 30px;
+}
+
+p{
+    color: #c1272d;
+    position: absolute;
+    top: 80%;
+    left: 5%;
+    font-weight: bold;
+}
+
+/* 페이징 */
+.navWrap .nav_btn{
+    width: 60px;
+    height: 60px;
+    
+    background-color: #00a99d;
+    box-shadow: 2px 2px #0b4c3b;
+    border-radius: 100%;
+    color: #ffffff;
+    
+    font-weight: 900;
+    font-size: 47px;
+    line-height: 49px;
+    
+    position: absolute;
+    top: 160px;
+    
+    cursor: pointer;
+}
+
+.navWrap .nav_prev{
+    left: -32px;
+    padding-left: 10px;
+}
+
+.navWrap .nav_next{
+    left: 669px;
+    padding-left: 16px;
+}
+
+.dotWrap{
+    position: relative;
+    top: 261px;
+    margin: 0px auto;
+    background-color: #00a99d;
+    
+    border-radius: 10px;
+}
+
+.dotWrap .dot{
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    background-color: #ffffff;
+    position: absolute;
+    margin-top: 8px;
+    
+    box-shadow: none;
+    top: 0px;
+    
+    cursor: pointer;
+}
+
+.dotWrap .dot.on{
+    background-color: #0b4c3b;
+}
+
+/* 타이머 */
+.timeWrap{
+    width: 510px;
+    height: 40px;
+    background-color: #9474bf;
+    position: absolute;
+    top: 454px;
+    left: 148px;
+}
+
+.timebar:first-child{
+    margin-left: 10px;
+}
+
+.timebar{
+    width: 40px;
+    height: 30px;
+    float: left;
+    background-color: #ffa4b5;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.curTime{
+    color: #9474bf;
+    position: absolute;
+    top: -3px;
+    left: -42px;
+    font-size: 30px;
+}
+
+/* 결과지 */
+.resultWrap{
+    width: 400px;
+    height: 370px;
+    background-color: #fcf8d6;
+    border-radius: 15px;
+    position: absolute;
+    
+    top: 12px;
+    left: 163px;
+    z-index: 2;
+    
+    display: none;
+}
+
+.result{
+    position: relative;
+    margin-top: 45px;
+    left: 169px;
+}
+
+.resultWrap .btnClose{
+    width: 30px;
+    height: 30px;
+    
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    
+    background-color: #00a99d;
+    color: #ffffff;
+    border-radius: 100%;
+    
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    
+    cursor: pointer;
+}
+
+.resultWrap .result .ans{
+    width: 30px;
+    height: 30px;
+    
+    position: absolute;
+    top: 0px;
+    left: 13px;
+}
+
+.resultWrap .result .ans.onCorrect{
+    background: url(../images/ans_true.png) 0 0 no-repeat;
+    background-size: contain;
+}
+
+.resultWrap .result .ans.onWrong{
+    background: url(../images/ans_false.png) 0 0 no-repeat;
+    background-size: contain;
+}

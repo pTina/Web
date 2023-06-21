@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+</head>
+<body>
+    <py-script src="./main.py"></py-script>
+
+    <main class="container">
+        <div>
+            <input 
+                type="number"
+                id="number_input"
+                min="1"
+                max="50"
+                placeholder="Guess a number between 1 and 50"
+            />
+
+            <button id="add_todo" pys-onClick="play_game">Guess</button>
+        </div>
+
+        <h1 id="result"></h1>
+
+        <div>
+            <input 
+                type="number"
+                id="number_input2"
+                min="1"
+                max="50"
+                placeholder="Guess a number between 1 and 50"
+            />
+
+            <button id="add_todo" onclick="play_game2()">Guess</button>
+        </div>
+
+        <h1 id="result2"></h1>
+    </main>
+
+    <script type="text/javascript">
+        function play_game2(){
+            const $number_input = $('#number_input2');
+            const $result = $('#result2');
+
+            const user_guess = Number($number_input.val());
+            const machine_guess = (Math.floor(Math.random()*(50)) + 1);
+
+            console.log(user_guess);
+            if(user_guess === 0){
+                $result.html("Input value is null:(");
+                return false;
+            }
+
+            if(user_guess === machine_guess){
+                $result.html("You win!");
+            }else{
+                $result.html(`You lost! The machine chose ${machine_guess}!`)
+            }
+
+            $number_input.val('');
+        }
+    </script>
+</body>
+</html>

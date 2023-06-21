@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+}
+
+.dragArea,
+.dropArea {
+    width: 400px;
+    height: 150px;
+    padding-top: 26px;
+    padding-left: 33px;
+    border: 1px solid #000;
+}
+
+.dragItem {
+    width: 100px;
+    height: 100px;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 100px;
+    margin-right: 10px;
+    float: left;
+    cursor: pointer;
+}
+
+
+.dropItem {
+    width: 102px;
+    height: 102px;
+    border-radius: 10px;
+    border: 2px solid darkseagreen;
+    float: left;
+    margin-right: 10px;
+}
+
+.rebtn {
+    width: 100px;
+    height: 50px;
+    background-color: deeppink;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.dropObj {
+    border: 1px solid brown;
+    text-align: center;
+    line-height: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: antiquewhite;
+
+}
+
+.wrap:nth-of-type(2) .dropItem {
+    padding-left: 13px;
+}
+
+.wrap:nth-of-type(2) .dropItem .dropObj {
+    border: 1px solid brown;
+    text-align: center;
+    line-height: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: antiquewhite;
+
+}
+
+.wrap:nth-of-type(2) .dropItem .obj1 {
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+
+.wrap:nth-of-type(2) .dropItem .obj2 {
+    position: relative;
+    top: 10px;
+    left: 20px;
+}
+
+.wrap:nth-of-type(2) .dropItem .obj3 {
+    position: relative;
+    top: 10px;
+    left: 30px;
+}
+
+.wrap:nth-of-type(2) .dropItem .obj4 {
+    position: relative;
+    top: 10px;
+    left: 40px;
+}

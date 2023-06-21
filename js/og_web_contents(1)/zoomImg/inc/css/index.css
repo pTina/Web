@@ -1,0 +1,73 @@
+.content{
+    position: absolute;
+    width: 1000px;
+    height: 830px;
+    background: #0388A6;
+}
+
+.btnWrap,
+.zoomPage{
+    position: absolute;
+}
+
+.btnWrap{
+    width: 50px;
+    height: 110px;
+    top: 100px;
+    left: 100px;
+    background-color: #ECEBF1;
+    border-radius: 25px;
+}
+
+.btnWrap div{
+    margin: 6px;
+    width: 38px;
+    height: 29px;
+    background-color: #F29985;
+    border-radius: 5px;
+    color: #ECEBF1;
+    text-align: center;
+    line-height: 22px;
+    font-size: 32px;
+}
+
+.btnWrap div:nth-child(1){
+    border-radius: 20px 20px 5px 5px;
+    line-height: 35px;
+}
+
+.btnWrap div:nth-child(3){
+    border-radius: 5px 5px 20px 20px;
+    line-height: 33px;
+}
+
+.btnWrap div.btn{
+    cursor: pointer;
+}
+
+.btnWrap div.scale{
+    font-size: 13px;
+    line-height: 30px;
+}
+
+.zoomPage{
+    width: 600px;
+    height: 600px;
+    top: 100px;
+    left: 217px;
+    border: 1px dotted #474747;
+    
+    overflow: hidden;
+}
+
+.zoom{
+    width: 100%;
+    height: 100%;
+}
+
+.zoom > img{
+    transform: scale(1);
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
