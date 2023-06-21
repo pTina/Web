@@ -1,0 +1,285 @@
+body {
+    padding: 45px;
+    overflow: hidden;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+button{
+    border: none;
+    background: none;
+}
+input {
+    border: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+input:focus {outline:none;}
+
+/* font */
+.baseNeue{
+    font-family: 'Bebas Neue', cursive;
+}
+
+.NanumPS{
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+.NanumGothic{
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+
+/* body */
+body{
+    background: #febbaf;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* wrap */
+#wrap{
+    display: flex;
+    flex-direction: column;
+    min-width: 500px;
+    width: 600px;
+    align-items: center;
+    background: #ededed;
+
+    height: 810px;
+}
+
+/* main */
+#main{
+    background: #52a090;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#main > h1{
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    width: 80%;
+}
+
+#btnMenu{
+    width: 10%;
+    color: white;
+    text-align: center;
+}
+
+#menu.on{
+    display: flex;
+}
+
+#menu{
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 50px;
+    background: #52a090;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    z-index: 100;
+}
+
+#menu .menuItem{
+    height: 50px;
+    color: white;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    font-family: 'Nanum Gothic', sans-serif;
+    cursor: pointer;
+}
+
+#home{
+    width: 10%;
+    text-align: center;
+    color: white;
+}
+
+/* userInput */
+[view="page-home"] .userInput{
+    display: flex;
+}
+
+.userInput{
+    width: 100%;
+    height: 50px;
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.textBox{
+    width: 75%;
+    border-radius: 10px;
+    padding: 7px 20px;
+    background: #fff;
+    margin-right: 10px;
+}
+
+.textBox > input{
+    width: 100%;
+    height: 100%;
+    background: none;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.btnAdd > i{
+    font-size: 32px;
+    color: #4eb9ea;
+}
+
+/* listBox */
+#listBox{
+    width: 100%;
+    height: 650px;
+    padding: 0px 16px;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+   
+    overflow: auto;
+    overflow-x: hidden;
+    margin-bottom: 20px;
+}
+
+#listBox{ -ms-overflow-style: none; }
+#listBox::-webkit-scrollbar{ display:none; }
+
+.listItem{
+    width: 85%;
+    height: 100px;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 20px;
+    position: relative;
+
+    min-height: 100px;
+}
+
+.listItem:nth-child(1){
+    margin-top: 20px;
+}
+
+.check{
+    margin-left: -22px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 4px solid #4eb9ea;
+    background: #fff;
+    text-align: center;
+    line-height: 44px;
+    color: #fff;
+}
+
+.check > i{
+    opacity: 0;
+}
+
+.check.on{
+    background: #4eb9ea;
+}
+
+.check.on > i{
+    opacity: 1;
+}
+
+.listItem .content{
+    display: flex;
+    margin-left: 20px;
+    align-items: center;
+    max-width: 85%;
+    word-break: break-word;
+}
+
+.listItem .content .todo{
+    margin-right: 13px;
+    font-size: 20px;
+    color: #4d6287;
+}
+
+.listItem .content .mark .fa-star{
+    font-size: 21px;
+    margin-top: 1px;
+    color: #c0c0c0;
+}
+
+.listItem .content .mark.on .fa-star{
+    color: #f9bf73;
+}
+
+.listItem .btnClose{
+    position: absolute;
+    top: -12px;
+    right: -10px;
+    font-size: 15px;
+    width: 25px;
+    height: 25px;
+    box-shadow: 1px 1px 4px #808080;
+    border-radius: 50%;
+    background: #ebebeb;
+    color: #808080;
+    /* display: none; */
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.listItem:hover .btnClose{
+    opacity: 1;
+}
+
+.listItem.moving{
+    transform: scale(1.05);
+    opacity: 0.8;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.listItem{
+    cursor: pointer;
+    /* user-select: none; */
+}
+
+/*  */
+.bxShadow{
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.pointer{
+    cursor: pointer;
+}

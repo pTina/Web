@@ -1,0 +1,142 @@
+:root{
+	--color-main: #f20000;
+}
+
+ul, li{
+	list-style: none;
+}
+
+
+/* header-menu */
+.header-menu > ul > li{
+	padding: 10px 30px;
+}
+
+.header-menu > ul > li > div{
+	cursor: pointer;
+	text-align: center;
+	border: 1px solid var(--color-main);
+	border-radius: 10px;
+	padding: 5px 10px;
+	margin-bottom: 10px;
+}
+
+.header-menu > ul > li > div:hover{
+	color: #fff;
+	background: var(--color-main);
+
+	transition: background 0.5s;
+}
+
+.header-menu > ul > li > ul{
+	padding: 0px;
+}
+
+.header-menu > ul > li > ul > li > div{
+	cursor: pointer;
+	padding: 0px 10px;
+}
+
+.header-menu .header-sub{
+	visibility: hidden;
+}
+
+.header-menu > ul > li[data-act="on"] > div{
+	color: #fff;
+	background: var(--color-main);
+}
+
+.header-menu > ul > li[data-act="on"] > .header-sub{
+	visibility: visible;
+}
+
+.header-menu .header-sub > li{
+	position: relative;
+}
+
+.header-menu .header-sub > li[data-act="on"]::before{
+	content: "";
+	display: block;
+	width: 7px;
+	height: 7px;
+	background: var(--color-main);
+	border-radius: 50%;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 24px;
+
+	opacity: 1;
+	transition: opacity 0.5s;
+}
+
+.header-menu .header-sub > li[data-act="on"]{
+	pointer-events: none;
+}
+
+
+/* contents - table */
+.contents .col:first-child{
+	display: none;
+}
+
+.contents .col{
+	text-align: center;
+}
+
+.contents .col:nth-child(3){
+	text-align: left;
+	text-indent: 10px;
+}
+
+.contents .col:nth-child(2){
+	max-width: 15%;
+}
+
+.contents .col:nth-child(3){
+	max-width: 60%;
+}
+
+.contents .col:nth-child(4){
+	max-width: 12.55%;
+}
+
+.contents .col:nth-child(5){
+	max-width: 12.5%;
+}
+
+.contents .title .col{
+	background: var(--color-main);
+	color: #fff;
+	border-right: 1px solid #fff;
+}
+
+.contents .table .col{
+	padding: 5px 17px;
+	border-right: 1px solid var(--color-main);
+	border-bottom: 1px solid var(--color-main);
+}
+
+.contents .table .col:last-child,
+.contents .title .col:last-child{
+	border-right: none;
+}
+
+/* data-state */
+[data-state="done"],
+[data-state="done"] ~ div{
+	background-color: rgba(183, 183, 183, 0.5);
+	color: rgba(183, 183, 183);
+}
+
+[data-state="new"],
+[data-state="new"] ~ div{
+	background-color: rgba(242, 0, 0, 0.5);
+	color: #fff;
+}
+
+[data-state="ing"],
+[data-state="ing"] ~ div{
+	background-color: rgba(183, 183, 183, 0.5);
+}
+

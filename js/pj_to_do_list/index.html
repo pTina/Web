@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c527d8640b.js" crossorigin="anonymous"></script>
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="index/src/css/style.css" rel="stylesheet">
+    <title>Document</title>
+
+    <style>
+        .position {
+            position: absolute;
+            top: 70px;
+            left: 20px;
+        }
+
+        .position>span {
+            display: block;
+        }
+
+        .position>span::after {
+            content: attr(data);
+            display: inline-block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="wrap" view="page-home">
+        <div id="main">
+            <div id="home" class="pointer">
+                <i class="fa-solid fa-house"></i>
+            </div>
+
+            <h1 class="baseNeue">To Do List</h1>
+
+            <div id="btnMenu" class="pointer">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div id="menu">
+                <div id="bookMark" class="menuItem">즐겨찾기 보기</div>
+                <div id="comItem" class="menuItem">완료 항목 보기</div>
+                <div id="inComitem" class="menuItem">미완료 항목 보기</div>
+            </div>
+        </div>
+        <div class="userInput">
+            <div class="textBox">
+                <input type="text" class="inputText NanumPS" />
+            </div>
+            <button type="button" class="btnAdd pointer"><i class="fa-solid fa-circle-plus"></i></button>
+        </div>
+        <div id="listBox"></div>
+    </div>
+
+    <!-- <div class="position">
+        <span class="pst pstX" data="0">x: </span>
+        <span class="pst pstY" data="0">y: </span>
+
+        <span class="pst pstItem" data="0">item: </span>
+        <span class="pst pstState" data=""></span>
+    </div> -->
+
+    
+    <!-- 
+        https://meaownworld.tistory.com/89
+        브라우저는 이전에 사용한 CSS를 브라우저가 캐쉬에 보관해놓고 사용하기에 링크된 CSS 변화점을 기억하지 못함
+        그래서 뒤에 ?문자열 붙여서
+        새로운 파일이라고 알림
+    -->
+    
+    <!-- <script type="module" src="../common/js/jquery-3.4.1.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script type="module" src="./src/js/firebase.js"></script> -->
+
+    <script type="module" src="index/src/js/index.js"></script>
+
+    <!-- <script type="module" src="./src/item.js"></script> -->
+    <!-- <script type="module" src="./src/js/todolist.js?xx"></script> -->
+    
+
+    <!-- <script type="module" src="./src/item.js"></script> -->
+    <!-- <script type="module" src="./src/js/drag.js"></script> -->
+    
+    <!-- <script type="module">
+    </script> -->
+
+</body>
+
+
+
+</html>
