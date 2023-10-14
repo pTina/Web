@@ -48,7 +48,7 @@ export class Render{
                             <div class="col-3">이용 요금</div>
                             <div class="col-9">
                             <div class="row py-1">{{__useCharge__}}</div>
-                            <div class="row py-1" id="mapInfo">
+                            <div class="row py-1 disabled" id="mapInfo">
                                 <div class="col-3">예상금액</div>
                                 <div class="col-9">
                                     <div class="row">출발지</div>
@@ -207,6 +207,7 @@ export class Render{
                     $parent.addClass('bgOn');
                     $this.find('i').removeClass(copyNo);
                     $this.find('i').addClass(copyYes);
+                    alert('복사되었습니다.');
                     Render.time1 = setTimeout(()=>{
                         $parent.removeClass('bgOn');
                         $this.find('i').removeClass(copyYes);
