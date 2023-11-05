@@ -31,7 +31,7 @@ input[type='number']::-webkit-outer-spin-button {
             appearance: none;
 }
 
-input:focus {outline:none;}
+input:focus {outline:auto;}
 
 /* font */
 .baseNeue{
@@ -179,7 +179,7 @@ body{
 
 .listItem{
     width: 85%;
-    height: 100px;
+    height: 80px;
     background: #fff;
     border-radius: 10px;
     display: flex;
@@ -188,14 +188,16 @@ body{
     margin-bottom: 20px;
     position: relative;
 
-    min-height: 100px;
+    min-height: 80px;
+    padding: 10px 0;
 }
 
 .listItem:nth-child(1){
     margin-top: 20px;
 }
 
-.check{
+/* .check{ */
+.chk_state{
     margin-left: -22px;
     width: 40px;
     height: 40px;
@@ -205,26 +207,45 @@ body{
     text-align: center;
     line-height: 44px;
     color: #fff;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+/* input[type="checkbox"]:focus + label .check{
+    outline: auto;
+} */
 
 .check > i{
     opacity: 0;
 }
 
-.check.on{
+/* .check.on, */
+.chk_state:checked{
     background: #4eb9ea;
 }
-
-.check.on > i{
-    opacity: 1;
+.chk_state:checked:after{
+    content: 'v';
+    color: #fff;
+    display: block;
 }
+/* .check.on > i, */
+/* .chk_state:checked + label .check > i{opacity: 1;} */
+
 
 .listItem .content{
     display: flex;
-    margin-left: 20px;
+    margin-left: 34px;
     align-items: center;
     max-width: 85%;
     word-break: break-word;
+    max-height: 100px;
+    overflow-y: auto;
 }
 
 .listItem .content .todo{
@@ -239,9 +260,18 @@ body{
     color: #c0c0c0;
 }
 
-.listItem .content .mark.on .fa-star{
+.listItem .content .chk_mark:checked + label.mark .fa-star{
     color: #f9bf73;
 }
+
+.listItem .content .chk_mark:focus + label{
+    outline: auto;
+}
+/* input[type="checkbox"]:focus + label .mark .fa-star,
+.listItem .content .mark.on .fa-star{
+    
+} */
+
 
 .listItem .btnClose{
     position: absolute;
@@ -255,13 +285,13 @@ body{
     background: #ebebeb;
     color: #808080;
     /* display: none; */
-    opacity: 0;
-    transition: opacity 0.2s;
+    /* opacity: 0;
+    transition: opacity 0.2s; */
 }
 
-.listItem:hover .btnClose{
+/* .listItem:hover .btnClose{
     opacity: 1;
-}
+} */
 
 .listItem.moving{
     transform: scale(1.05);

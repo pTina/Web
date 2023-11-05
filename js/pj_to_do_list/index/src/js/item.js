@@ -12,12 +12,22 @@ function removeItemData(id) {
     remove(ref(db, `items/${id}`));
     console.log('Remove');
 }
+
+function allDelteData(){
+    const db = firebase.getDatabase();
+    firebase.remove(ref(db));
+}
     
 // 상태변화
 function chageItemData(id, obj) {
     const db = firebase.getDatabase();
     update(ref(db, `items/${id}`), obj);
 }
+
+{/* <div class="mark pointer">
+                        <i class="fa-regular fa-star"></i>
+                    </div> */}
+{/* <div class="check pointer"><i class="fa-solid fa-check"></i></div> */}
 
 class Item {
     constructor(input, id){
@@ -29,16 +39,17 @@ class Item {
         this._idx = 0;
         this._html = `
             <div class="listItem bxShadow" id="${this._id}">
-                <div class="check pointer">
-                    <i class="fa-solid fa-check"></i>
-                </div>
-                <div class="content">
-                    <div class="todo NanumPS">${this.inputVal}</div>
-                    <div class="mark pointer">
-                        <i class="fa-regular fa-star"></i>
+                <input class="chk_state" type="checkbox" id="chk_${this._id}" alt="${this._id}번째 ${this.inputVal} 완료상태 버튼"/>
+                <label for="chk_${this._id}">
+                    <div class="content">
+                        <div class="todo NanumPS">${this.inputVal}</div>
+
+                        <input class="chk_mark" type="checkbox" id="chk_mark_${this._id}" alt="${this._id}번째 ${this.inputVal} 즐겨찾기 버튼"/>
+                        <label class="mark pointer" for="chk_mark_${this._id}"><i class="fa-regular fa-star"></i></label>
                     </div>
-                </div>
-                <button type="button" class="btnClose pointer">
+                </label>
+                
+                <button type="button" class="btnClose pointer" alt="${this.inputVa} 삭제 버튼">
                     <i class="fa-regular fa-x"></i>
                 </button>
             </div>
@@ -107,55 +118,62 @@ class Item {
             listItem.addListItem(this);
         }
 
-        const $check = $wrap.find('.check');
-        const $mark = $wrap.find('.mark');
+        const $check = $wrap.find('.chk_state');
+        const $mark = $wrap.find('.chk_mark');
         const $btnClose = $wrap.find('.btnClose');
         // let thisCurIdx = $wrap.index();
 
-        $check.on('click', function(){
-            $(this).toggleClass('on');
-            if($(this).hasClass('on')){
-                _self.check = true;
-            }else{
-                _self.check = false;
-            }
-
+        function onClickCheck(state){
+            _self.check = state;
+            $(`#chk_${_self.id}`).prop('checked', _self.check);
             try{
                 chageItemData(_self._id, {'_check': _self.check});
                 // console.log('_check 상태 변화 완료');
-
             }catch(e){
                 console.error(e);
                 console.log('STATE CHECK ERROR:(');
             }
-
-            
+        }
+        $check.on('keyup', function (e) {
+            e.stopImmediatePropagation();
+            if (e.keyCode === 13){
+                const state = $(this).prop('checked') ? false : true;
+                onClickCheck(state);
+            }
         })
 
-        $mark.on('click', function(){
-            $(this).toggleClass('on');
-            const $icon = $(this).find('i');
+        $check.on('change', function(){
+            const state = $(this).prop('checked');
+            onClickCheck(state);
+        })
 
-            if($(this).hasClass('on')){
-                $icon.removeClass('fa-regular').addClass('fa-solid');
-                _self.mark = true;
 
-            }else{
-                $icon.removeClass('fa-solid').addClass('fa-regular');
-                _self.mark = false;
-            }
+        function onClickCheckMark(state){
+            // const $input = el.closest('.listItem').find('.chk_mark');
+            _self.mark = state;
+            $(`#chk_mark_${_self.id}`).prop('checked', _self.mark);
 
             try{
                 chageItemData(_self._id, {'_mark': _self.mark});
                 // console.log('_mark 상태 변화 완료:)');
-
             }catch(e){
                 console.error(e);
                 console.log('_mark ERROR:(');
             }
+        }
 
-            
+        $mark.on('keyup', function (e) {
+            e.stopImmediatePropagation();
+            if (e.keyCode === 13){
+                const state = $(this).prop('checked') ? false : true;
+                onClickCheckMark(state);
+            };
         })
+        $mark.on('change', function(){
+            const state = $(this).prop('checked');
+            onClickCheckMark(state);
+        })
+
 
         $btnClose.on('click', () => {
             // LISTITEM.removeListItem(this.id);
@@ -191,4 +209,4 @@ class Item {
     }
 };
 
-export {chageItemData, Item};
+export {chageItemData, Item, allDelteData};

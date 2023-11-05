@@ -11,7 +11,7 @@
 
 // import { GetDatabase, Ref, Set, Remove } from './firebase.js';
 import { firebase, GetAuth } from './firebase.js';
-import { chageItemData, Item } from './item.js';
+import { chageItemData, Item, allDelteData } from './item.js';
 import { listItem } from './listItem.js';
 
 const set = firebase.set;
@@ -26,6 +26,7 @@ const db = firebase.getDatabase();
 function writeItemData(obj) {
     const data = { ...obj };
     set(ref(db, `items/${obj.id}`), data);
+    $('.inputText').val('');
 }
 
 // 데이터 조회
@@ -53,12 +54,15 @@ function getItemData(key, value, wrap) {
     }).then((itemData)=>{
         wrap[0].innerHTML = '';
 
-        // console.log(listItem);
+        console.log(listItem);
 
         if(KEY === 'home'){
             itemData.forEach((obj, index)=>{
                 wrap.append(obj[1]._html);
                 listItem.listItem[index].initItem('re');
+                $(`#chk_${obj[1]._id}`).prop('checked', obj[1]._check);
+                $(`#chk_mark_${obj[1]._id}`).prop('checked', obj[1]._mark);
+                console.log(obj);
             })
 
         }else{
@@ -66,9 +70,12 @@ function getItemData(key, value, wrap) {
                 if(obj[1][key] === VALUE){
                     wrap.append(obj[1]._html);
                     listItem.listItem[index].initItem('re');
+                    $(`#chk_${obj[1]._id}`).prop('checked', obj[1]._check);
+                    $(`#chk_mark_${obj[1]._id}`).prop('checked', obj[1]._mark);
                 }
             })
         }
+        
         
     }).catch((e) => {
         console.log('데이터 조회 ERROR:(');
@@ -99,13 +106,19 @@ export function ToDoList(wrap) {
     }
 
     this.init = function () {
-        self.btnAdd.on('click', function () {
+        allDelteData();
+        // self.render('home');
+
+        self.btnAdd.on('click', function (e) {
+            e.preventDefault();
             self.addItem();
         })
 
         self.inputText.on('keyup', function (e) {
-            if (e.keyCode === 13) self.addItem();
-
+            e.stopImmediatePropagation();
+            if (e.keyCode === 13){
+                self.addItem();
+            }
         })
 
         self.btnMenu.on('click', function () {
@@ -149,26 +162,7 @@ export function ToDoList(wrap) {
         const _key = key;
         const _value = value;
         getItemData(_key, _value, self.listBox);
-        // if (_key === undefined || _value === undefined) {
-        //     $.each(self.listItem, (index, item) => {
-        //         self.listBox.append(item.html);
-        //         item.initItem();
-        //         const $item = $(`#${item.id}`);
-        //         self.overHeight($item.find('.todo'));
-        //     })
-        //     return false;
-        // }
-
         
-
-        // $.each(self.listItem, (index, item) => {
-        //     if (item[_key] === _value) {
-        //         self.listBox.append(item.html);
-        //         item.initItem();
-        //         const $item = $(`#${item.id}`);
-        //         self.overHeight($item.find('.todo'));
-        //     }
-        // })
     }
 
     this.overHeight = function (el) {
@@ -187,7 +181,12 @@ export function ToDoList(wrap) {
 
     this.addItem = function () {
         const el = self.inputText;
-        if (self.isEmpty(el)) return false;
+        if (self.isEmpty(el)){
+            // alert("해야할 일을 입력하고 더하기 버튼을 다시 눌러주세요.");
+            // console.log('비었음');
+            return false;
+        };
+
 
         self.count++;
         const item = new Item(el.val(), `list-${self.count}`);
@@ -195,8 +194,6 @@ export function ToDoList(wrap) {
         // item.initItem(self.elItem(item._id));
         try{
             writeItemData(item);
-
-            el.val('');
             self.listBox.append(item.html);
             item.initItem();
             const $item = $(`#${item.id}`);
@@ -217,12 +214,7 @@ export function ToDoList(wrap) {
 
     this.isEmpty = function (el) {
         const str = el.val().trim();
-
-        if (str === '') {
-            return true;
-        } else {
-            return false;
-        }
+        return str === '' ? true : false;
     }
 
 }
