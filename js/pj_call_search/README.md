@@ -41,7 +41,7 @@
 파이썬은 JSON 읽기 가능  
 .txt ⇒ .json 으로 변경하였음  
 파일 문자열로 읽은 다음 JSON 형태로 변경하기 성공  
-[자료정리-노션](https://petal-fear-59b.notion.site/str-to-json-d3aa022f3f0a47f9b1949d4395215ded)
+[자료정리-노션](https://www.notion.so/4cfaaa1c35664f50be5949528feb6ea5)
 
 
 
