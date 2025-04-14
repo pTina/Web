@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="root"></div>
+</body>
+<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script>
+    const root = document.getElementById("root");
+    const h3 = React.createElement("h3", null, "Hello, world!");
+    const btn = React.createElement("button", {
+        onClick: ()=> console.log("clicked"),
+    }, "Click me");
+    // => 하나의 statement로 html 작성도 필요 없고, 이벤트 리스너도 필요 없고, dom을 선택할 필요도 없음
+    const container = React.createElement("div", null, [h3, btn]);
+    ReactDOM.render(container, root);
+</script>
+</html>
+<!-- 
+1. javascript로 dom 만들기
+2. html
+
+React가 HTML을 생성할 때는 React JS가 element를 생성함 "React.createElement"
+즉, 업데이트가 필요한 element를 업데이트 할 것이다.
+즉, React JS가 결과물인 HTML을 업데이트 할 수 있다.
+즉, 사용자에게 보여질 내용을 컨트롤할 수 있다.
+
+-->
