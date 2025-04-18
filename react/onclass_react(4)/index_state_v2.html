@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root");
+    function App(){
+        const [counter, setCounter]= React.useState(0); // modifire(setCounter) 함수로 데이터를 바꿨을 때, 데이터 값이 바뀌고 리렌더링 됨
+        const onClick = ()=>{
+            setCounter(counter+1);
+        };
+        
+        /*
+        const data = React.useState();
+        console.log(data); // [undefined, ƒ] - undefined: data, ƒ: data를 바꿀 때 사용하는 함수
+        React.useState(0); // data를 0으로 초기화
+            [0, ƒ]얘의 의미는 아래의 코드와 의미가 동일함
+            let counter = 0;
+            function countUp(){}
+
+        const x = [1,2,3]
+        const [a, b, c] = x // a=x[0], b=x[1], c=x[2] 이렇게 저장 됨
+        */
+        return (
+            <div>
+                <h3>Total clicks: {counter}</h3>
+                <button onClick ={onClick}>Click me</button>
+            </div>
+        );
+    }
+
+    ReactDOM.render(<App />, root);
+</script>
+</html>
+
