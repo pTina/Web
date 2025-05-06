@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    
+    function MinToHours(){
+        const [amount, setAmount] = React.useState();
+        const [flipped, setFlipped] = React.useState(false);
+        
+        const onChange = (event)=>{
+            setAmount(event.target.value);
+        }
+        const reset = () => setAmount(0);
+        const onFlip = () => {
+            reset();
+            setFlipped((current) => !current);
+        }
+
+        return (
+            <div>
+                <h2>Min to Hours</h2>
+                <div>
+                    <label Htmlfor="minutes">Minutes</label>
+                    <input
+                        value={flipped ? amount * 60 : amount}
+                        id="minutes"
+                        placeholder="Minutes"
+                        type="number"
+                        onChange={onChange}
+                        disabled={flipped}
+                    />
+                </div>
+
+                <div>
+                    <label Htmlfor="hours">Hours</label>
+                    <input
+                        value={flipped ? amount : (amount/60).toFixed(1)}
+                        id="hours"
+                        placeholder="Hours"
+                        type="number"
+                        onChange={onChange}
+                        disabled={!flipped}
+                    />
+                </div>
+                
+                <button onClick={reset}>Reset</button>
+                <button onClick={onFlip}>Flip</button>
+            </div>
+        );
+    }
+
+    function UsdToKRW(){
+        const [krw, setKrw] = React.useState(0);
+        const [usd, setUsd] = React.useState(0);
+        const [amout, setAmount] = React.useState(0);
+
+        // flipped ?  원화 투 달러 : 달러 투 원화
+        const [flipped, setFlipped] = React.useState(false);
+
+        function reset(){
+            setKrw(0);
+            setUsd(0);
+            setAmount(0);
+        }
+
+        function onChange(event){
+            const value = event.target.value;
+            flipped ?  setKrw(value) : setUsd(value);
+            fetchRate(value);
+        }
+        function onFlip(){
+            reset();
+            setFlipped((current) => !current);
+        }
+        async function fetchRate(value){
+            const cond = flipped ? "KRW&to=USD" : "USD&to=KRW";
+
+            try {
+                const res = await fetch(`https://api.frankfurter.app/latest?amount=${value}&from=${cond}`);
+                const data = await res.json();
+                const krw = data.rates.KRW;
+                flipped ? setAmount(data.rates.USD) : setAmount(data.rates.KRW);
+
+            } catch (error) {
+                console.error('환율 변환 중 오류 발생:', error);
+            }
+        }
+
+        return(
+            <div>
+                <h2>USD to KRW</h2>
+                <p>{flipped ? "True": "False"}</p>
+
+                <div>
+                    <label Htmlfor="usd">usd</label>
+                    <input
+                        value={!flipped ? usd : amout}
+                        id="usd"
+                        placeholder="usd"
+                        type="number"
+                        disabled = {flipped}
+                        onChange={onChange}
+                    />
+                </div>
+
+                <div>
+                    <label Htmlfor="krw">krw</label>
+                    <input
+                        value={flipped ? krw : amout}
+                        id="krw"
+                        placeholder="krw"
+                        type="number"
+                        disabled = {!flipped}
+                        onChange={onChange}
+                    />
+                </div>
+                
+                <div>
+                    <button onClick={reset}>Reset</button>
+                    <button onClick={onFlip}>Flip</button>
+                </div>
+            </div>
+
+            
+        );
+    }
+
+    
+    
+    function App(){
+        const [index, setIndex] = React.useState("1");
+        function onSelect(event){
+            setIndex(event.target.value);
+        }
+        
+        return (
+            <div>
+                <h1>Super Conterter</h1>
+                <select value={index} onChange={onSelect}>
+                    <option value="0">min to hours</option>
+                    <option value="1">usd to krw</option>
+                </select>
+                <p>{index}</p>
+
+                {index === "0" ? <MinToHours/> : null}
+                {index === "1" ? <UsdToKRW/> : null}
+            </div>
+        );
+    }
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+</script>
+</html>
+<!-- JSX 문법으로 컴포넌트 만들기 -->
