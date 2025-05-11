@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+<script type="text/babel">
+    function Btn({text, fontSize=12}){
+        return (
+            <button
+                style={{
+                    backgroundColor: 'tomato',
+                    border: 0,
+                    color: "white",
+                    padding: 10,
+                    borderRadius: 10,
+                    fontSize
+                }}
+            >
+                {text}
+            </button>
+        );
+    }
+
+    Btn.propTypes = {
+        text: PropTypes.string.isRequired, // text는 반드시 있어야 하는 값이고, type은 string
+        fontSize: PropTypes.number // fontSize는 없어도 되고, type은 number
+    };
+
+    function App(){
+        return (
+            <div>
+                <Btn text={"Save Changes"} fontSize={16}/>
+                <Btn text={"Continue"} />
+            </div>
+        );
+    }
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+</script>
+</html>
