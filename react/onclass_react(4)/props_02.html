@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script type="text/babel">
+
+    function Btn(props){
+        console.log(`${props.text} was rendered`);
+        return (
+            <button
+                onClick = {props.onClick}
+                style={{
+                    backgroundColor: 'tomato',
+                    border: 0,
+                    color: "white",
+                    padding: 10,
+                    borderRadius: 10,
+                    fontSize: 16,
+                }}
+            >
+                {props.text}
+            </button>
+        );
+    }
+
+    const MemorizedBtn = React.memo(Btn); // 컴포넌트를 re-render 할지 말지 결정할 수 있게 함
+
+    function App(){
+        const [value, setValue] = React.useState('Save Changes');
+        const onClick = () => setValue("Revert changes");
+
+        return (
+            <div>
+                <MemorizedBtn text={value} onClick={onClick} />
+                <MemorizedBtn text="Confirm" />
+            </div>
+        );
+    }
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+</script>
+</html>
